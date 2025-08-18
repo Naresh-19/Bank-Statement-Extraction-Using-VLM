@@ -35,3 +35,6 @@ This project leverages Vision Language Models (VLMs) to extract and process tran
     - Gemini-2.5-flash
     - Llama-4-Maverick-17B-128E-Instruct
 - **Complementary Extraction**: `CAMELOT` for additional data validation
+
+## Workflow
+![VLM Extraction Workflow](vlm_extraction_workflow.png)
