@@ -2,8 +2,6 @@ import os
 import logging
 from pathlib import Path
 import streamlit as st
-from table_cropper import crop_tables_from_pdf
-from prompts import prompt1,prompt2
 from PIL import Image
 import warnings
 import base64
@@ -15,9 +13,11 @@ import pandas as pd
 import json
 import re
 
+from table_cropper import crop_tables_from_pdf
+from prompts import prompt1,prompt2
 from bank_extractor import extract_bank_statement
 
-load_dotenv()
+load_dotenv()   
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
