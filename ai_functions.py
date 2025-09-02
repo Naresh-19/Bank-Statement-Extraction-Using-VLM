@@ -8,10 +8,18 @@ from io import BytesIO
 from PIL import Image
 from groq import Groq
 import google.generativeai as genai
+from dotenv import load_dotenv
 from prompts import prompt1, prompt2
 
+load_dotenv(override=True)
 GROQ_API_KEY = os.getenv("GROQ_API_KEY")
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if not GROQ_API_KEY or not GEMINI_API_KEY:
+    raise ValueError(
+        "GROQ_API_KEY or GEMINI_API_KEY not found in environment variables. Please set them in .env file"
+    )
+
 
 client = Groq(api_key=GROQ_API_KEY)
 genai.configure(api_key=GEMINI_API_KEY)
