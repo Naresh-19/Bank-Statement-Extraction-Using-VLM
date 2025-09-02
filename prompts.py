@@ -35,4 +35,7 @@ Rules:
 - If Credit comes before Debit in table, put "cr" before "dr" in JSON
 - If Debit comes before Credit in table, put "dr" before "cr" in JSON  
 - Always keep dt first and type last
-- Be Strict  - Return ONLY the reordered JSON schema array and Date_Order :(ASCENDING/DESCENDING) alone, nothing else"""
+- Strictly Return ONLY the reordered JSON schema array and Date_Order :(ASCENDING/DESCENDING) alone, nothing else
+
+Avoid including any additional text or explanations.Just return the JSON array and Date_Order.
+"""
