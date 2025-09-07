@@ -282,7 +282,7 @@ class BankStatementExtractor:
             
             self.all_transactions.append(transaction)
     
-    def extract_transactions(self, pdf_path, progress_callback=None):
+    def extract_transactions(self, pdf_path, progress_callback=None,password=None):
         """Main extraction method"""
         try:
             num_pages = self.validate_pdf(pdf_path)
@@ -290,13 +290,13 @@ class BankStatementExtractor:
             if progress_callback:
                 progress_callback("Attempting Camelot extraction...")
             
-            tables = camelot.read_pdf(pdf_path, pages='all', flavor='lattice')
+            tables = camelot.read_pdf(pdf_path, pages='all', flavor='lattice',password=password)
             
             if not tables:
                 if progress_callback:
                     progress_callback("Camelot lattice failed, trying stream flavor...")
-                tables = camelot.read_pdf(pdf_path, pages='all', flavor='stream', edge_tol=75, row_tol=10)
-            
+                tables = camelot.read_pdf(pdf_path, pages='all', flavor='stream', edge_tol=75, row_tol=10,password=password)
+
             if tables:
                 if progress_callback:
                     progress_callback(f"Found {len(tables)} tables")
@@ -354,7 +354,7 @@ class BankStatementExtractor:
         return summary
 
 
-def extract_bank_statement(pdf_path, output_csv=None, progress_callback=None):
+def extract_bank_statement(pdf_path, output_csv=None, progress_callback=None, password=None):
     """
     Enhanced bank statement extraction with automatic header detection
     
@@ -372,7 +372,7 @@ def extract_bank_statement(pdf_path, output_csv=None, progress_callback=None):
     if progress_callback:
         progress_callback(f"Extracting from: {pdf_path}")
     
-    extractor.extract_transactions(pdf_path, progress_callback)
+    extractor.extract_transactions(pdf_path, progress_callback, password=password)
     
     df = extractor.get_dataframe()
     
