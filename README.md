@@ -84,7 +84,7 @@ streamlit run vlm_extractor.py
   * Llama-4-Maverick-17B-128E-Instruct
 * **Refinement**: Camelot (PDF table parsing)
 * **Framework**: Streamlit for UI
-* **PDF Handling**: fitz (PyMuPDF), PyPDF2
+* **PDF Handling**: fitz (PyMuPDF)
 
 ---
 
